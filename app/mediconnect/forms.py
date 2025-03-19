@@ -30,4 +30,4 @@ class RegisterForm(UserCreationForm):
 class MedicalDocumentForm(forms.ModelForm):
     class Meta:
         model = MedicalDocument
-        fields = ["document"]
+        fields = ["document","document_summary"]

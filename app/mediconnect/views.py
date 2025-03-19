@@ -159,6 +159,7 @@ def upload_medical_document(request, user_id):
             document = form.save(commit=False)
             document.user = user
             document.hospital = request.user
+            document.document_summary = form.cleaned_data["document_summary"]
             document.save()
             return redirect("hospital_dashboard")
 
