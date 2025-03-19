@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Patient Dashboard</title>
+    <!-- Bootstrap CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-light">
+    <div class="container mt-5">
+      <div class="card shadow-sm p-4">
+        <h1 class="text-center text-primary">🩺 Patient Dashboard</h1>
+
+        <!-- Medical Documents -->
+        <h2 class="mt-4">📂 My Medical Documents</h2>
+        {% if documents %}
+        <ul class="list-group">
+          {% for doc in documents %}
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
+            <a href="{{ doc.document.url }}" class="text-decoration-none">
+              {{ doc.document.name }}
+            </a>
+            <span class="text-muted small">🕒 {{ doc.uploaded_at }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p class="text-muted">No documents available.</p>
+        {% endif %}
+
+        <!-- Doctor Access Requests -->
+        <h2 class="mt-4">🔑 Doctor Access Requests</h2>
+        {% if access_requests %}
+        <ul class="list-group">
+          {% for request in access_requests %}
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
+            <span>Dr. {{ request.doctor.username }}</span>
+            {% if request.approved %}
+            <span class="badge bg-success">✔ Access Granted</span>
+            <a
+              href="{% url 'revoke_access' request.id %}"
+              class="btn btn-danger btn-sm"
+              >Revoke</a
+            >
+            {% else %}
+            <a
+              href="{% url 'approve_access' request.hash_link %}"
+              class="btn btn-primary btn-sm"
+              >Approve</a
+            >
+            <a
+              href="{% url 'deny_access' request.id %}"
+              class="btn btn-danger btn-sm"
+              >Deny</a
+            >
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p class="text-muted">No pending requests.</p>
+        {% endif %}
+
+        <!-- Logout Button -->
+        <div class="text-center mt-4">
+          <a href="{% url 'logout' %}" class="btn btn-secondary">Logout</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

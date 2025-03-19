@@ -1,0 +1,21 @@
+# to start a virtual python environment
+python -m venv venv
+
+# start the virtual environment
+source venv/bin/activate
+
+# navigate to the app
+cd app
+
+# install all dependencies
+pip install
+
+# make DB migrations
+python manage.py makemigrations
+python manage.py migrate
+
+# create a super user
+python manage.py createsuperuser
+
+# run the app
+ python manage.py runserver

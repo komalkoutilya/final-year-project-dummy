@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MediConnect | Secure Medical Records</title>
+    <!-- Bootstrap CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* Custom Styling */
+      body {
+        background-color: #f8f9fa;
+      }
+      .hero {
+        background: url('https://source.unsplash.com/1600x900/?hospital,healthcare')
+          no-repeat center center/cover;
+        color: white;
+        padding: 100px 0;
+        text-align: center;
+        position: relative;
+      }
+      .hero-overlay {
+        background: rgba(0, 0, 0, 0.6);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .hero-content {
+        position: relative;
+        z-index: 1;
+      }
+      .features {
+        padding: 60px 0;
+      }
+      .btn-custom {
+        font-size: 1.2rem;
+        padding: 10px 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Hero Section -->
+    <header class="hero">
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <h1 class="display-4 fw-bold">Welcome to MediConnect</h1>
+        <p class="lead">
+          Securely manage and share your medical records with ease.
+        </p>
+        <a
+          href="{% url 'login' %}"
+          class="btn btn-primary btn-lg btn-custom me-2"
+          >Login</a
+        >
+        <a
+          href="{% url 'register' %}"
+          class="btn btn-outline-light btn-lg btn-custom"
+          >Register</a
+        >
+      </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="features text-center">
+      <div class="container">
+        <h2 class="mb-4">Why Choose MediConnect?</h2>
+        <div class="row">
+          <div class="col-md-4">
+            <i class="bi bi-shield-lock fs-1 text-primary"></i>
+            <h4>Secure Data</h4>
+            <p>Your medical records are encrypted and safely stored.</p>
+          </div>
+          <div class="col-md-4">
+            <i class="bi bi-hospital fs-1 text-primary"></i>
+            <h4>Seamless Access</h4>
+            <p>
+              Doctors and hospitals can access records with your permission.
+            </p>
+          </div>
+          <div class="col-md-4">
+            <i class="bi bi-clock-history fs-1 text-primary"></i>
+            <h4>Always Available</h4>
+            <p>Access your medical documents anytime, anywhere.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+      <p class="mb-0">&copy; 2025 MediConnect. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
