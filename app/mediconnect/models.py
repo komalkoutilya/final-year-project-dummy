@@ -40,7 +40,22 @@ class MedicalDocument(models.Model):
         limit_choices_to={"role": "hospital"},
     )
     document = models.FileField(upload_to=user_directory_path)
-    document_summary=models.TextField(default="") #new updated by __
+    document_summary=models.TextField(default="") #new updated by @komalkoutilya
+    document_severity=models.IntegerField(
+        choices=[
+            (0,'0'),
+            (1,'1'),
+            (2,'2'),
+            (3,'3'),
+            (4,'4'),
+            (5,'5'),
+            (6,'6'),
+            (7,'7'),
+            (8,'8'),
+            (9,'9'),
+        ],
+        default=0
+    ) #new updated by @komalkoutilya
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

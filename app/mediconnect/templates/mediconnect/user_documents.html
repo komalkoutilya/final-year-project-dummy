@@ -24,9 +24,17 @@
           <li
             class="list-group-item d-flex justify-content-between align-items-center"
           >
-            <a href="{{ doc.document.url }}" class="text-decoration-none">
+
+ 
+            <a href="{{ doc.document.url }}" class="text-decoration-none" >
               {{ doc.document.name }}
             </a>
+            <!-- Added for displaying document severity level -->
+            <h2 class="text-muted" style="border-radius: 50%; background-color: green; padding:0.7%"><b>{{ doc.document_severity }}</b></h2> &nbsp;
+            &nbsp;
+            &nbsp;
+            <!-- Added for displaying document summary -->
+            <span class="text-muted small">📝{{ doc.document_summary }}</span> 
             <span class="text-muted small">🕒 {{ doc.uploaded_at }}</span>
             <form method="POST" onsubmit="return confirm('Are you sure?')">
               {% csrf_token %}
@@ -45,6 +53,13 @@
         <div class="text-center mt-3">
           <a href="{% url 'hospital_dashboard' %}" class="btn btn-secondary"
             >🔙 Back to Dashboard</a
+          >
+        </div>
+
+        <!-- new for summary -->
+        <div class="text-center mt-3">
+          <a href="{% url 'hospital_dashboard' %}" class="btn btn-secondary"
+            >View Summary</a
           >
         </div>
       </div>
