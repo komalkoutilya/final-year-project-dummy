@@ -22,6 +22,8 @@ from django.utils.encoding import force_bytes, force_str
 from django.utils.crypto import get_random_string
 
 
+
+
 def landing_page(request):
     if request.user.is_authenticated:  # Check if the user is logged in
         return redirect_to_correct_dashboard(request.user)
@@ -346,3 +348,35 @@ def revoke_access(request, request_id):
         )
 
     return redirect("user_dashboard")
+
+# user-complete-summary... {new feature added by @komalkoutilya}
+@login_required
+def user_complete_summary(request, user_id):
+    patient = get_object_or_404(User, unique_id=user_id) # Get user
+    documents = MedicalDocument.objects.filter(user=patient) #Fetch all docs
+
+    document_summary_list=[str(i.document_summary) for i in documents]
+    document_severity_list=[int(i.document_severity) for i in documents]
+
+    final_summary="".join(document_summary_list)
+    return render(request, "mediconnect/user_complete_summary.html", {"summary":final_summary, "patient_id":patient.unique_id})
+
+
+
+
+# def user_documents(request, user_id):
+#     patient = get_object_or_404(User, unique_id=user_id)  # Get user
+#     documents = MedicalDocument.objects.filter(user=patient)  # Fetch all docs
+
+#     if request.method == "POST":  # Handling document deletion
+#         doc_id = request.POST.get("doc_id")
+#         doc = get_object_or_404(MedicalDocument, id=doc_id)
+#         doc.document.delete()  # Delete the file
+#         doc.delete()  # Delete from database
+#         return redirect("user_documents", user_id=user_id)
+
+#     return render(
+#         request,
+#         "mediconnect/user_documents.html",
+#         {"patient": patient, "documents": documents},
+#     )

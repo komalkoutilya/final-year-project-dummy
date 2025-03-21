@@ -17,6 +17,7 @@ from .views import (
     doctor_access_requests,
     doctor_documents,
     revoke_access,
+    user_complete_summary
 )
 from django.contrib.auth.views import LogoutView
 from .views import CustomLoginView
@@ -51,4 +52,7 @@ urlpatterns = [
     path(
         "doctor/documents/<uuid:patient_id>/", doctor_documents, name="doctor_documents"
     ),
+
+    # complete_summary_link
+    path("user-complete-summary/<uuid:user_id>/", user_complete_summary, name="user_complete_summary")
 ]
