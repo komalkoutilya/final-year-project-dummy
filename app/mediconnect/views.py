@@ -66,7 +66,7 @@ def user_dashboard(request):
     return render(
         request,
         "mediconnect/user_dashboard.html",
-        {"documents": documents, "access_requests": access_requests},
+        {"documents": documents, "access_requests": access_requests, "patient": request.user}
     )
 
 

@@ -23,7 +23,7 @@
         <li
           class="list-group-item d-flex justify-content-between align-items-center"
         >
-          <a href="{{ doc.document.url }}" class="text-decoration-none" style="width: 300px">
+          <a href="{{ doc.document.url }}" class="text-decoration-none" style="width: 800px">
             📄 {{ doc.document.name }}
           </a>
 
@@ -31,12 +31,6 @@
           <h2 class="text-muted" style="border-radius: 50%; background-color: green; padding:0.7%"><b>{{ doc.document_severity }}</b></h2> &nbsp;
           &nbsp;
           &nbsp;
-          <!-- Added for displaying document summary -->
-          <!-- <span class="text-muted small">📝{{ doc.document_summary }}</span> -->
-          <div class="popup" onclick="myFunction()">Summary
-            <span class="popuptext" id="myPopup">{{doc.document_summary}}</span>
-          </div>
-          &nbsp;&nbsp;
 
           <span class="badge bg-secondary"
             > ✏️{{ doc.uploaded_at }}</span
@@ -56,7 +50,7 @@
           >Back to Dashboard</a
         >
         <!-- for summarization -->
-        <a href="{% url 'doctor_dashboard' %}" class="btn btn-secondary me-2"
+        <a href="{% url 'user_complete_summary' user_id=patient.unique_id %}" class="btn btn-secondary me-2"
           >Summarize Documents</a
         >
         <br /><br />

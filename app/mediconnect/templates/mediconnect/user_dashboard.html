@@ -30,9 +30,18 @@
           </li>
           {% endfor %}
         </ul>
+
+        <div class="text-center mt-3">
+          <a href="{% url 'user_complete_summary' user_id=patient.unique_id %}" class="btn btn-secondary"
+            >View Summary</a
+          >
+        </div>
+
         {% else %}
         <p class="text-muted">No documents available.</p>
         {% endif %}
+        
+
 
         <!-- Doctor Access Requests -->
         <h2 class="mt-4">🔑 Doctor Access Requests</h2>
