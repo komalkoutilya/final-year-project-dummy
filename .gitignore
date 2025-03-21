@@ -1,2 +1,4 @@
 .venv
-app/media
+*.pdf
+*.png
+*.jpg
